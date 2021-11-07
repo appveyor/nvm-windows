@@ -4,4 +4,4 @@ build_script:
 test: off
 
 artifacts:
-- dist\$(AppVersion)
+- path: dist\$(AppVersion)
