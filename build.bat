@@ -2,7 +2,7 @@
 SET INNOSETUP=%CD%\nvm.iss
 SET ORIG=%CD%
 REM SET GOPATH=%CD%\src
-SET GOBIN=%CD%\bin
+SET BIN=%CD%\bin
 REM Support for older architectures
 SET GOARCH=386
 
@@ -17,13 +17,13 @@ cd .\src
 go build nvm.go
 
 REM Group the file with the helper binaries
-move nvm.exe %GOBIN%
+move nvm.exe %BIN%
 cd ..\
 
 REM Codesign the executable
-REM .\buildtools\signtools\x64\signtool.exe sign /debug /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a %GOBIN%\nvm.exe
+REM .\buildtools\signtools\x64\signtool.exe sign /debug /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a %BIN%\nvm.exe
 
-for /f %%i in ('"%GOBIN%\nvm.exe" version') do set AppVersion=%%i
+for /f %%i in ('"%BIN%\nvm.exe" version') do set AppVersion=%%i
 echo nvm.exe v%AppVersion% built.
 
 REM Create the distribution folder
@@ -39,7 +39,7 @@ REM Create the distribution directory
 mkdir "%DIST%"
 
 REM Create the "no install" zip version
-for %%a in ("%GOBIN%") do (buildtools\zip -j -9 -r "%DIST%\nvm-noinstall.zip" "%CD%\LICENSE" %%a\* -x "%GOBIN%\nodejs.ico")
+for %%a in ("%BIN%") do (buildtools\zip -j -9 -r "%DIST%\nvm-noinstall.zip" "%CD%\LICENSE" %%a\* -x "%BIN%\nodejs.ico")
 
 REM Generate update utility
 cd .\updater
@@ -59,9 +59,9 @@ REM Generate checksums
 for %%f in (%DIST%\*.*) do (certutil -hashfile "%%f" MD5 | find /i /v "md5" | find /i /v "certutil" >> "%%f.checksum.txt")
 
 REM Cleanup
-del %GOBIN%\nvm.exe
-del %GOBIN%\nvm-update.exe
-del %GOBIN%\nvm-setup.exe
+del %BIN%\nvm.exe
+del %BIN%\nvm-update.exe
+del %BIN%\nvm-setup.exe
 
 echo NVM for Windows v%AppVersion% build completed.
 @echo on
