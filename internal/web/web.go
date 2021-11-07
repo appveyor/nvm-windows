@@ -7,14 +7,15 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"nvm/arch"
-	"nvm/file"
 	"os"
 	"os/signal"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
+
+	"github.com/appveyor/nvm-windows/internal/arch"
+	"github.com/appveyor/nvm-windows/internal/file"
 
 	"archive/zip"
 

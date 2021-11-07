@@ -6,22 +6,8 @@ SET BIN=%CD%\bin
 REM Support for older architectures
 SET GOARCH=386
 
-REM Cleanup existing build if it exists
-if exist src\nvm.exe (
-  del src\nvm.exe
-)
-
-REM Make the executable and add to the binary directory
-echo Building nvm.exe
-cd .\src
-go build nvm.go
-
-REM Group the file with the helper binaries
-move nvm.exe %BIN%
-cd ..\
-
-REM Codesign the executable
-REM .\buildtools\signtools\x64\signtool.exe sign /debug /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a %BIN%\nvm.exe
+REM Build executable
+go build -o %BIN%\nvm.exe cmd\nvm\main.go
 
 for /f %%i in ('"%BIN%\nvm.exe" version') do set AppVersion=%%i
 echo nvm.exe v%AppVersion% built.

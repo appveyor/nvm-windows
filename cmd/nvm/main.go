@@ -15,10 +15,10 @@ import (
 	"syscall"
 	"time"
 
-	"nvm/arch"
-	"nvm/file"
-	"nvm/node"
-	"nvm/web"
+	"github.com/appveyor/nvm-windows/internal/arch"
+	"github.com/appveyor/nvm-windows/internal/file"
+	"github.com/appveyor/nvm-windows/internal/node"
+	"github.com/appveyor/nvm-windows/internal/web"
 
 	"github.com/blang/semver"
 	"github.com/olekukonko/tablewriter"

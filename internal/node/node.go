@@ -3,14 +3,14 @@ package node
 import (
 	"encoding/json"
 	"io/ioutil"
-	"nvm/arch"
-	"nvm/file"
-	"nvm/web"
 	"os/exec"
 	"regexp"
 	"strings"
 
-	// "../semver"
+	"github.com/appveyor/nvm-windows/internal/arch"
+	"github.com/appveyor/nvm-windows/internal/file"
+	"github.com/appveyor/nvm-windows/internal/web"
+
 	"github.com/blang/semver"
 )
 
