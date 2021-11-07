@@ -5,3 +5,4 @@ test: off
 
 artifacts:
 - path: dist\$(AppVersion)\*
+  name: nvm-windows
