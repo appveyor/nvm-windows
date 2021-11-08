@@ -25,7 +25,7 @@ echo Create the distribution directory
 mkdir "%DIST%"
 
 echo Create the "no install" zip version
-for %%a in ("%BIN%") do (buildtools\zip -j -9 -r "%DIST%\nvm-noinstall.zip" "%CD%\LICENSE" %%a\* -x "%BIN%\nodejs.ico")
+for %%a in ("%BIN%") do (buildtools\zip -j -9 -r "%DIST%\nvm.zip" "%CD%\LICENSE" %%a\* -x "%BIN%\nodejs.ico")
 
 echo Generate checksums
 for %%f in (%DIST%\*.*) do (certutil -hashfile "%%f" MD5 | find /i /v "md5" | find /i /v "certutil" >> "%%f.checksum.txt")
