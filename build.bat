@@ -7,7 +7,7 @@ REM Support for older architectures
 SET GOARCH=386
 
 echo Build executable
-go build -v -o %BIN%\nvm.exe -ldflags="-X main.NvmVersion=%APPVEYOR_BUILD_VERSION%" cmd\nvm\main.go
+go build -o %BIN%\nvm.exe -ldflags="-X main.NvmVersion=%APPVEYOR_BUILD_VERSION%" cmd\nvm\main.go
 
 for /f %%i in ('"%BIN%\nvm.exe" version') do set AppVersion=%%i
 echo nvm.exe v%AppVersion% built.
