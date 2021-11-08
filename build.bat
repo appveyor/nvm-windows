@@ -7,13 +7,13 @@ REM Support for older architectures
 SET GOARCH=386
 
 echo Build executable
-go build -o %BIN%\nvm.exe cmd\nvm\main.go
+go build -o %BIN%\nvm.exe -X github.com/appveyor/nvm-windows/cmd/nvm/main.NvmVersion=%APPVEYOR_BUILD_VERSION% cmd\nvm\main.go
 
 for /f %%i in ('"%BIN%\nvm.exe" version') do set AppVersion=%%i
 echo nvm.exe v%AppVersion% built.
 
 echo Create the distribution folder
-SET DIST=%CD%\dist\%AppVersion%
+SET DIST=%CD%\dist
 
 echo Remove old build files if they exist.
 if exist %DIST% (

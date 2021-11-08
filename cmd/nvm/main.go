@@ -24,7 +24,7 @@ import (
 	"github.com/olekukonko/tablewriter"
 )
 
-const (
+var (
 	NvmVersion = "1.1.9"
 )
 

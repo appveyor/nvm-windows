@@ -1,8 +1,10 @@
+version: '1.1.9+{build}'
+
 build_script:
 - build.bat
 
 test: off
 
 artifacts:
-- path: dist\$(AppVersion)\*
+- path: dist\*
   name: nvm-windows
