@@ -449,7 +449,13 @@ func use(version string, cpuarch string) {
 		version = v
 	}
 
-	version = cleanVersion(version)
+	// if the user specifies only the major version number then install the latest
+	// version of the major version number
+	if !strings.Contains(version, ".") {
+		version = findLatestSubVersion(version)
+	} else {
+		version = cleanVersion(version)
+	}
 
 	// Make sure the version is installed. If not, warn.
 	if !node.IsVersionInstalled(env.root, version, cpuarch) {
