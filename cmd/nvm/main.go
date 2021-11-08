@@ -25,7 +25,7 @@ import (
 )
 
 var (
-	NvmVersion = "1.1.9"
+	NvmVersion = "1.1.8"
 )
 
 type Environment struct {
